@@ -210,7 +210,7 @@ private let kPulleyDefaultCollapsedHeight: CGFloat = 68.0
 private let kPulleyDefaultPartialRevealHeight: CGFloat = 264.0
 
 open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDelegate {
-    
+
     // Interface Builder
     
     /// When using with Interface Builder only! Connect a containing view to this outlet.
@@ -507,6 +507,14 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     
     /// The starting position for the drawer when it first loads
     open var initialDrawerPosition: PulleyPosition!
+    open var _initialDrawerPosition: PulleyPosition! {
+        get {
+            return initialDrawerPosition
+        }
+        set {
+            initialDrawerPosition = newValue
+        }
+    }
 
     /// The display mode for Pulley. Default is 'drawer', which preserves the previous behavior of Pulley. If you want it to adapt automatically, choose 'automatic'. The current display mode is available by using the 'currentDisplayMode' property.
     public var displayMode: PulleyDisplayMode = .drawer {
