@@ -506,15 +506,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     }
     
     /// The starting position for the drawer when it first loads
-    open var initialDrawerPosition: PulleyPosition!
-    open var _initialDrawerPosition: PulleyPosition! {
-        get {
-            return initialDrawerPosition
-        }
-        set {
-            initialDrawerPosition = newValue
-        }
-    }
+    open var initialDrawerPosition: PulleyPosition
 
     /// The display mode for Pulley. Default is 'drawer', which preserves the previous behavior of Pulley. If you want it to adapt automatically, choose 'automatic'. The current display mode is available by using the 'currentDisplayMode' property.
     public var displayMode: PulleyDisplayMode = .drawer {
@@ -737,6 +729,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      - returns: A newly created Pulley drawer.
      */
     required public init(contentViewController: UIViewController, drawerViewController: UIViewController) {
+        self.initialDrawerPosition = .collapsed
+
         super.init(nibName: nil, bundle: nil)
         
         ({
@@ -755,6 +749,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      - returns: A newly created Pulley drawer.
      */
     required public init?(coder aDecoder: NSCoder) {
+        self.initialDrawerPosition = .collapsed
+
         super.init(coder: aDecoder)
     }
     
