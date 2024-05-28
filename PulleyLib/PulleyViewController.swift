@@ -1596,7 +1596,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
             let partialRevealHeight = drawerVCCompliant.partialRevealDrawerHeight?(bottomSafeArea: bottomSafeArea) {
             return partialRevealHeight
         } else {
-            return 264.0 + bottomSafeArea
+            return kPulleyDefaultPartialRevealHeight + bottomSafeArea
         }
     }
     

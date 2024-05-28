@@ -89,7 +89,7 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat
     {
         // For devices with a bottom safe area, we want to make our drawer taller. Your implementation may not want to do that. In that case, disregard the bottomSafeArea value.
-        return 264.0 + (pulleyViewController?.currentDisplayMode == .drawer ? bottomSafeArea : 0.0)
+        return kPulleyDefaultPartialRevealHeight + (pulleyViewController?.currentDisplayMode == .drawer ? bottomSafeArea : 0.0)
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
