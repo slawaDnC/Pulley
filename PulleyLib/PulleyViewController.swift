@@ -207,8 +207,7 @@ public enum PulleySnapMode {
 }
 
 private let kPulleyDefaultCollapsedHeight: CGFloat = 68.0
-//private let kPulleyDefaultPartialRevealHeight: CGFloat = 264.0
-private let kPulleyDefaultPartialRevealHeight: CGFloat = 350.0
+private let kPulleyDefaultPartialRevealHeight: CGFloat = 264.0
 
 open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDelegate {
 
