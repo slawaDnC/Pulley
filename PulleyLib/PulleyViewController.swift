@@ -210,6 +210,19 @@ private let kPulleyDefaultCollapsedHeight: CGFloat = 68.0
 private let kPulleyDefaultPartialRevealHeight: CGFloat = 264.0
 
 open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDelegate {
+    public enum Constants {
+        /// The animation duration for setting the drawer position
+        public static let animationDuration: TimeInterval = 0.3
+
+        /// The animation delay for setting the drawer position
+        public static let animationDelay: TimeInterval = 0.0
+
+        /// The spring damping for setting the drawer position
+        public static let animationSpringDamping: CGFloat = 0.75
+
+        /// The spring's initial velocity for setting the drawer position
+        public static let animationSpringInitialVelocity: CGFloat = 0.0
+    }
 
     // Interface Builder
     
@@ -554,17 +567,17 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     }
     
     /// The animation duration for setting the drawer position
-    @IBInspectable public var animationDuration: TimeInterval = 0.3
-    
+    @IBInspectable public var animationDuration: TimeInterval = Constants.animationDuration
+
     /// The animation delay for setting the drawer position
-    @IBInspectable public var animationDelay: TimeInterval = 0.0
-    
+    @IBInspectable public var animationDelay: TimeInterval = Constants.animationDelay
+
     /// The spring damping for setting the drawer position
-    @IBInspectable public var animationSpringDamping: CGFloat = 0.75
-    
+    @IBInspectable public var animationSpringDamping: CGFloat = Constants.animationSpringDamping
+
     /// The spring's initial velocity for setting the drawer position
-    @IBInspectable public var animationSpringInitialVelocity: CGFloat = 0.0
-    
+    @IBInspectable public var animationSpringInitialVelocity: CGFloat = Constants.animationSpringInitialVelocity
+
     /// This setting allows you to enable/disable Pulley automatically insetting the drawer on the left/right when in 'bottomDrawer' display mode in a horizontal orientation on a device with a 'notch' or other left/right obscurement.
     @IBInspectable public var adjustDrawerHorizontalInsetToSafeArea: Bool = true {
         didSet {
@@ -1309,7 +1322,15 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      - parameter animated: Whether or not to animate the change. (Default: true)
      - parameter completion: A block object to be executed when the animation sequence ends. The Bool indicates whether or not the animations actually finished before the completion handler was called. (Default: nil)
      */
-    public func setDrawerPosition(position: PulleyPosition, animated: Bool, completion: PulleyAnimationCompletionBlock? = nil) {
+    public func setDrawerPosition(
+        position: PulleyPosition,
+        animated: Bool,
+        animationDuration: TimeInterval = Constants.animationDuration,
+        animationDelay: TimeInterval = Constants.animationDelay,
+        animationSpringDamping: CGFloat = Constants.animationSpringDamping,
+        animationSpringInitialVelocity: CGFloat = Constants.animationSpringInitialVelocity,
+        completion: PulleyAnimationCompletionBlock? = nil
+    ) {
         guard supportedPositions.contains(position) else {
             
             print("PulleyViewController: You can't set the drawer position to something not supported by the current view controller contained in the drawer. If you haven't already, you may need to implement the PulleyDrawerViewControllerDelegate.")
