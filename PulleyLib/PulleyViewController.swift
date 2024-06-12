@@ -222,6 +222,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
 
         /// The spring's initial velocity for setting the drawer position
         public static let animationSpringInitialVelocity: CGFloat = 0.0
+
+        public static let animationOptions: UIView.AnimationOptions = [.curveEaseInOut]
     }
 
     // Interface Builder
@@ -589,8 +591,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     }
     
     /// The animation options for setting the drawer position
-    public var animationOptions: UIView.AnimationOptions = [.curveEaseInOut]
-    
+    public var animationOptions: UIView.AnimationOptions = Constants.animationOptions
+
     /// The drawer snap mode
     public var snapMode: PulleySnapMode = .nearestPositionUnlessExceeded(threshold: 20.0)
     
@@ -1329,6 +1331,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
         animationDelay: TimeInterval = Constants.animationDelay,
         animationSpringDamping: CGFloat = Constants.animationSpringDamping,
         animationSpringInitialVelocity: CGFloat = Constants.animationSpringInitialVelocity,
+        animationOptions: UIView.AnimationOptions = Constants.animationOptions,
         completion: PulleyAnimationCompletionBlock? = nil
     ) {
         guard supportedPositions.contains(position) else {
